@@ -8,10 +8,9 @@ namespace MyStore.Domain.Enum
 {
     public enum OrderStatus
     {
-        Draft = 0,
-        Created = 1,
-        Confirmed = 2,
-        Shipped = 3,
-        Cancelled = 4
+        Pending = 0,
+        Processing = 1,
+        Completed = 2,
+        Cancelled = 3,
     }
 }
