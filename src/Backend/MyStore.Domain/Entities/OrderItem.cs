@@ -10,12 +10,8 @@ namespace MyStore.Domain.Entities
 {
     public class OrderItem:EntityBase
     {
-        [BsonRepresentation(BsonType.Int64)]
         public long OrderId { get; set; }
-
-        [BsonRepresentation(BsonType.Int64)]
         public long ProductId { get; set; }
-
         public string ProductName { get; set; } = string.Empty;
         public int Quantity { get; set; }
         public decimal UnitPrice { get; set; }
