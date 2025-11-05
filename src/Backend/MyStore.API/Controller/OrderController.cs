@@ -54,7 +54,7 @@ namespace MyStore.API.Controller
         [Route("GetAllOrder/")]
         [ProducesResponseType(typeof(ResponseOrdersJson), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetAllOrderStatus()
+        public async Task<IActionResult> GetAllOrder()
         {
             var result = await _mediator.Send(new GetAllOrderQuerie());
 
