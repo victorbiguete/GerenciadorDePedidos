@@ -10,7 +10,7 @@
 | Camada | Tecnologias / Padrões |
 |--------|------------------------|
 | **Backend** | ASP.NET Core Web API |
-| **Banco de Dados** | MongoDB | SQL Server |
+| **Banco de Dados** | MongoDB, SQL Server |
 | **Padrões** | Clean Architecture, DDD, CQRS, SOLID |
 | **Mapper** | AutoMapper |
 | **Validações** | FluentValidation |
