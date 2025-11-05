@@ -7,9 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="FluentValidation" Version="12.1.0" />
+    <PackageReference Include="MediatR" Version="13.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Shared\MyStore.Communication\MyStore.Communication.csproj" />
     <ProjectReference Include="..\..\Shared\MyStore.Exceptions\MyStore.Exceptions.csproj" />
     <ProjectReference Include="..\MyStore.Domain\MyStore.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Queries\OrderItens\" />
   </ItemGroup>
 
 </Project>
