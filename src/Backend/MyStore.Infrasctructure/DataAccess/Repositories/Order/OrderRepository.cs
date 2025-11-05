@@ -22,7 +22,7 @@ namespace MyStore.Infrasctructure.DataAccess.Repositories.Order
             await _context.Orders.AddAsync(entity);
         }
 
-        public async void Delete(long id)
+        public async Task Delete(long id)
         {
             var order = await _context.Orders.FindAsync(id);
 
@@ -36,7 +36,7 @@ namespace MyStore.Infrasctructure.DataAccess.Repositories.Order
 
         public void Update(Domain.Entities.Order entity)
         {
-            throw new NotImplementedException();
+            _context.Orders.Update(entity);
         }
     }
 }
