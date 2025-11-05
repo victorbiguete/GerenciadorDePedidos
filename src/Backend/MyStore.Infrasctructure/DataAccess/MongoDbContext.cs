@@ -15,7 +15,7 @@ namespace MyStore.Infrasctructure.DataAccess
         public MongoDbContext(IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("MongoConnection");
-            var databaseName = configuration["MongoDatabasename"];
+            var databaseName = configuration["MongoDatabaseName"];
 
             var client = new MongoClient(connectionString);
             _database = client.GetDatabase(databaseName);
