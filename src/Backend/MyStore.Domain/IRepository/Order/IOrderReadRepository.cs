@@ -11,9 +11,10 @@ namespace MyStore.Domain.IRepository.Order
     {
         Task<OrderReadModel?> GetByIdAsync(long id);
         Task<IEnumerable<OrderReadModel?>> GetAllAsync();
+        Task<IEnumerable<OrderReadModel?>> GetAllOrderStatus(int status);
         Task<IEnumerable<OrderReadModel?>> GetOrdersByCustomerIdAsync(long customerId);
         Task AddAsync(OrderReadModel entity);
-        void Delete(long id);
-        void Update(OrderReadModel entity);
+        Task Delete(long id);
+        Task Update(OrderReadModel entity);
     }
 }

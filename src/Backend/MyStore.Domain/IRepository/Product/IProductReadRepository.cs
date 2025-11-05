@@ -11,8 +11,6 @@ namespace MyStore.Domain.IRepository.Product
     {
         Task<ProductReadModel> GetByIdAsync(long id);
         Task<IEnumerable<ProductReadModel>> GetAllAsync();
-        Task AddAsync(ProductReadModel entity);
-        void Delete(long id);
-        void Update(ProductReadModel entity);
+        
     }
 }

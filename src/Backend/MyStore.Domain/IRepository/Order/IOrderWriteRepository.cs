@@ -9,6 +9,6 @@ namespace MyStore.Domain.IRepository.Order
     public interface IOrderWriteRepository
     {
         Task AddAsync(Entities.Order entity);
-        void Delete(long id);
+        Task Delete(long id);
     }
 }

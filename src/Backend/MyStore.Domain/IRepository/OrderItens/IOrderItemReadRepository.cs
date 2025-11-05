@@ -13,8 +13,8 @@ namespace MyStore.Domain.IRepository.OrderItens
         Task<OrderItemReadModel?> GetByIdAsync(long id);
         Task<IEnumerable<OrderItemReadModel>> GetByOrderIdAsync(long orderId);
         Task<IEnumerable<OrderItemReadModel>> GetAllAsync();
-        Task AddAsync(OrderItemReadModel entity);
-        void Delete(long id);
-        void Update(OrderItemReadModel entity);
+        Task AddAsync(IList<OrderItemReadModel> entity);
+        Task Delete(long id);
+        Task Update(OrderItemReadModel entity);
     }
 }

@@ -12,8 +12,6 @@ namespace MyStore.Domain.IRepository.ICustomer
     {
         Task<CustomerReadModel?> GetByIdAsync(long id);
         Task<IEnumerable<CustomerReadModel?>> GetAllAsync();
-        Task AddAsync(CustomerReadModel entity);
-        void Delete(long id);
-        void Update(CustomerReadModel entity);
+        
     }
 }
