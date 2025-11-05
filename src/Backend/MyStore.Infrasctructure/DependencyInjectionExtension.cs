@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MyStore.Domain.IRepository;
 using MyStore.Domain.IRepository.ICustomer;
 using MyStore.Domain.IRepository.Order;
 using MyStore.Domain.IRepository.OrderItens;
@@ -16,20 +17,20 @@ using MyStore.Infrasctructure.DataAccess.Repositories.Order;
 using MyStore.Infrasctructure.DataAccess.Repositories.OrderItem;
 using MyStore.Infrasctructure.DataAccess.Repositories.Product;
 using MyStore.Infrasctructure.Extensions;
+using MyStore.Infrasctructure.Seed;
 using System.Reflection;
 
 namespace MyStore.Infrasctructure
 {
-    public class DependencyInjectionExtension
+    public static class DependencyInjectionExtension
     {
-        public static void AddInfrastructure(IServiceCollection services,IConfiguration configuration)
+        public static void AddInfrastructure(this IServiceCollection services,IConfiguration configuration)
         {
             AddRepository(services);
             AddDbContext_SqlServer(services,configuration);
             AddFluentMigrator(services, configuration);
             AddMongoDb(services, configuration);
         }
-
         private static void AddDbContext_SqlServer(IServiceCollection services,IConfiguration configuration)
         {
             services.AddDbContext<AppDbContext>(options =>
@@ -52,9 +53,10 @@ namespace MyStore.Infrasctructure
             services.AddScoped<IOrderItemReadRepository,OrderItemReadRepository>();
             services.AddScoped<IOrderItemUpdateOnlyRepository, OrderItemRepository>();
             services.AddScoped<IOrderItemWriteOnlyRepository, OrderItemRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
-        private static void AddMongoDb(IServiceCollection services, IConfiguration configuration)
+        public static void AddMongoDb(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<MongoDbContext>();
         }
