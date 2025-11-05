@@ -1,6 +1,6 @@
 # 🛒 MyStore API
 
-> **MyStore** é uma API desenvolvida em **.NET 8** com arquitetura limpa (Clean Architecture), seguindo os princípios **DDD**, **SOLID**, e utilizando **MongoDB** como banco de dados.  
+> **MyStore** é uma API desenvolvida em **.NET 8** com arquitetura limpa (Clean Architecture), seguindo os princípios **DDD**, **SOLID**, e utilizando **MongoDB** como banco de dados para leitura e **SQL Server** como banco de escrita.  
 > O sistema simula uma aplicação de gestão de pedidos de uma loja, permitindo operações completas de CRUD para **Clientes**, **Produtos** e **Pedidos**.
 
 ---
@@ -10,13 +10,11 @@
 | Camada | Tecnologias / Padrões |
 |--------|------------------------|
 | **Backend** | ASP.NET Core Web API |
-| **Banco de Dados** | MongoDB |
+| **Banco de Dados** | MongoDB | SQL Server |
 | **Padrões** | Clean Architecture, DDD, CQRS, SOLID |
-| **Mensageria / Mediator** | MediatR |
 | **Mapper** | AutoMapper |
 | **Validações** | FluentValidation |
 | **Documentação** | Swagger (Swashbuckle) |
-| **Autenticação (futuro)** | JWT Token |
 
 ---
 
@@ -26,8 +24,7 @@ MyStore/
 ├── MyStore.Application/ # Casos de uso, Handlers e Queries/Commands
 ├── MyStore.Communication/ # DTOs, Requests e Responses
 ├── MyStore.Domain/ # Entidades e Regras de Negócio
-├── MyStore.Infrastructure/ # Persistência e Configurações do MongoDB
-└── MyStore.Tests/ # Testes unitários e de integração
+├── MyStore.Infrastructure/ # Persistência e Configurações do MongoDB e SQL Server
 
 
 ---
@@ -38,8 +35,9 @@ MyStore/
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download)
 - [MongoDB](https://www.mongodb.com/try/download/community)
 - [Visual Studio](https://visualstudio.microsoft.com/) ou [VS Code](https://code.visualstudio.com/)
+- [SQL Server](https://www.microsoft.com/pt-br/download/details.aspx?id=104781)
 
-### 2️⃣ Configurar o MongoDB
+### 2️⃣ Configurar o MongoDB e SQL Server
 Edite o arquivo se achar necessario **`appsettings.Development.json`**:
 
 ```json
