@@ -17,11 +17,11 @@ namespace MyStore.Domain.ReadModel
         public string MongoId { get; set; }
         public long Id { get; set; }
         public bool Active { get; set; } 
-        public DateTime CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
         public long CustomerId { get; set; }
-        public DateTime OrderDate { get; set; }
+        public DateTime OrderDate { get; set; } = DateTime.UtcNow;
         public decimal TotalAmount { get; set; }
-        public OrderStatus Status { get; set; }
+        public OrderStatus Status { get; set; } = OrderStatus.Pending;
 
         public IList<OrderItemReadModel> OrderItems { get; set; } = [];
     }

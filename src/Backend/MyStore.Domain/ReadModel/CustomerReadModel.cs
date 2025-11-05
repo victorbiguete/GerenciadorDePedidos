@@ -18,6 +18,8 @@ namespace MyStore.Domain.ReadModel
         public string Email { get; set; }
         public string Phone { get; set; }
         public DateTime CreatedAt { get; set; }
+
+        //[BsonElement("Active")]
         public bool Active { get; set; } = true;
     }
 }
