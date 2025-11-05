@@ -10,7 +10,8 @@ namespace MyStore.Infrasctructure.Migration.Versions
     [Migration(DatabaseVersions.TABLE_ORDER, "Create table to save the Order's information")]
     public class Version000003:VersionBase
     {
-        private const string ORDER_TABLE_NAME = "Order";
+        private const string ORDER_TABLE_NAME = "Orders";
+        private const string CUSTOMER_TABLE_NAME = "Customers";
 
         public override void Up()
         {
@@ -18,7 +19,7 @@ namespace MyStore.Infrasctructure.Migration.Versions
                 .WithColumn("OrderDate").AsDateTime().NotNullable()
                 .WithColumn("TotalAmount").AsDecimal(18,2).NotNullable()
                 .WithColumn("Status").AsInt32().NotNullable()
-                .WithColumn("CustomerId").AsInt64().ForeignKey("FK_Orders_Customer","Customers","Id").OnDelete(System.Data.Rule.None);
+                .WithColumn("CustomerId").AsInt64().ForeignKey("FK_Orders_Customer", CUSTOMER_TABLE_NAME, "Id").OnDelete(System.Data.Rule.None);
         }
     }
 }
