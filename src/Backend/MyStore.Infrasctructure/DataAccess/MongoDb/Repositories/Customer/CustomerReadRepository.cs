@@ -15,32 +15,16 @@ namespace MyStore.Infrasctructure.DataAccess.MongoDb.Repositories.Customer
 
         public CustomerReadRepository(MongoDbContext context)
         {
-            _collection = context.GetCollection<CustomerReadModel>("customers");
+            _collection = context.GetCollection<CustomerReadModel>("Customers");
         }
-
-        public async Task AddAsync(CustomerReadModel entity)
-        {
-            await _collection.InsertOneAsync(entity);
-        }
-
-        public async Task Delete(long id)
-        {
-            await _collection.DeleteOneAsync(customer => customer.Id == id);
-        }
-
-        public async Task<IEnumerable<CustomerReadModel>> GetAllAsync()
+        public async Task<IEnumerable<CustomerReadModel?>> GetAllAsync()
         {
             return await _collection.Find(customer => customer.Active).ToListAsync();
         }
 
-        public async Task<CustomerReadModel> GetByIdAsync(long id)
+        public async Task<CustomerReadModel?> GetByIdAsync(long id)
         {
             return await _collection.Find(customer => customer.Active &&  customer.Id == id).FirstOrDefaultAsync();
-        }
-
-        public async Task Update(CustomerReadModel entity)
-        {
-            await _collection.ReplaceOneAsync(customer => customer.Id == entity.Id, entity);
         }
     }
 }

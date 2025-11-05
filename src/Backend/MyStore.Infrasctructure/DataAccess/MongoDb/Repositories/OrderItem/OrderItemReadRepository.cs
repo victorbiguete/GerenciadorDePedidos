@@ -15,12 +15,12 @@ namespace MyStore.Infrasctructure.DataAccess.MongoDb.Repositories.OrderItem
 
         public OrderItemReadRepository(MongoDbContext context)
         {
-            _collection = context.GetCollection<OrderItemReadModel>("orderitens");
+            _collection = context.GetCollection<OrderItemReadModel>("OrderItens");
         }
 
-        public async Task AddAsync(OrderItemReadModel entity)
+        public async Task AddAsync(IList<OrderItemReadModel> entity)
         {
-            await _collection.InsertOneAsync(entity);
+            await _collection.InsertManyAsync(entity);
         }
 
         public async Task Delete(long id)

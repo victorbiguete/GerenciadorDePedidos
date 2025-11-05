@@ -15,17 +15,7 @@ namespace MyStore.Infrasctructure.DataAccess.MongoDb.Repositories.Product
 
         public ProductReadRepository(MongoDbContext context)
         {
-            _collection = context.GetCollection<ProductReadModel>("products");
-        }
-
-        public async Task AddAsync(ProductReadModel entity)
-        {
-            await _collection.InsertOneAsync(entity);
-        }
-
-        public async Task Delete(long id)
-        {
-            await _collection.DeleteOneAsync(product =>  product.Id == id);
+            _collection = context.GetCollection<ProductReadModel>("Products");
         }
 
         public async Task<IEnumerable<ProductReadModel>> GetAllAsync()
@@ -36,11 +26,6 @@ namespace MyStore.Infrasctructure.DataAccess.MongoDb.Repositories.Product
         public async Task<ProductReadModel> GetByIdAsync(long id)
         {
             return await _collection.Find(product => product.Active && product.Id == id).FirstOrDefaultAsync();
-        }
-
-        public async Task Update(ProductReadModel entity)
-        {
-            await _collection.ReplaceOneAsync(product => product.Id == entity.Id,entity);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MongoDB.Driver;
+using MyStore.Domain.Enum;
 using MyStore.Domain.IRepository.Order;
 using MyStore.Domain.ReadModel;
 using System;
@@ -12,10 +13,12 @@ namespace MyStore.Infrasctructure.DataAccess.MongoDb.Repositories.Order
     public class OrderReadRepository : IOrderReadRepository
     {
         private readonly IMongoCollection<OrderReadModel> _collection;
+        private readonly IMongoCollection<OrderItemReadModel> _collectionOrderItem;
 
         public OrderReadRepository(MongoDbContext context)
         {
-            _collection = context.GetCollection<OrderReadModel>("orders");
+            _collection = context.GetCollection<OrderReadModel>("Orders");
+            _collectionOrderItem = context.GetCollection<OrderItemReadModel>("OrderItens");
         }
 
         public async Task AddAsync(OrderReadModel entity)
@@ -26,11 +29,17 @@ namespace MyStore.Infrasctructure.DataAccess.MongoDb.Repositories.Order
         public async Task Delete(long id)
         {
             await _collection.DeleteOneAsync(order => order.Id == id);
+            await _collectionOrderItem.DeleteManyAsync(orderItem => orderItem.OrderId == id);
         }
 
         public async Task<IEnumerable<OrderReadModel?>> GetAllAsync()
         {
             return await _collection.Find(order => order.Active).ToListAsync();
+        }
+
+        public async Task<IEnumerable<OrderReadModel?>> GetAllOrderStatus(int status)
+        {
+            return await _collection.Find(order => order.Active && order.Status == (OrderStatus)status).ToListAsync();
         }
 
         public async Task<OrderReadModel?> GetByIdAsync(long id)
